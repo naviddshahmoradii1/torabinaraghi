@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'lalezar';
+    src: url(Fonts/Lalezar-Regular.ttf);
+}
+
+body
+{
+    font-family: 'lalezar';
+    padding-top: 80px;
+    background: rgb(164, 210, 250);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;  
+}
+
+nav
+{
+    height: 80px;
+    background: rgb(0, 94, 172);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    float: left;
+    z-index: 999;
+}
+
+nav h1
+{
+    color: white;
+    position: absolute;
+    top: 17px;
+    left: 12%;
+}
+
+nav ul
+{
+    float: right;
+    margin-right: 25px;
+}
+
+nav ul li
+{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 15px;
+}
+
+nav ul li a
+{
+    position: relative;
+    color: white;
+    padding: 5px 0;
+    font-size: 18px;
+}
+
+nav ul li a:before
+{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: white;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .4s linear;
+}
+
+nav ul li a:hover:before
+{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+label #btn,
+label #cancel
+{
+    margin-top: 30px;
+    color: white;
+    font-size: 30px;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+label #cancel div
+{
+    rotate: 45;
+    width: 20px;
+    height: 5px;
+    background: white;
+}
+
+label #btn div
+{
+    width: 20px;
+    height: 5px;
+    background: white;
+    margin-bottom: 2px;
+    border-radius: 5px;
+}
+
+#check
+{
+    display: none;
+}
+
+
+.profile
+{
+    margin: 10px;
+}
+
+.profile a
+{
+    margin-right: 90%;
+    background: rgb(0, 94, 172);
+    color: white;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.profile h2
+{
+    margin-top: 10px;
+    display: inline;
+    position: absolute;
+    
+}
+
+#about img
+{
+    width: 150px;
+    border-radius: 50%;
+    border: 15px solid rgb(46, 109, 161);
+    margin-left: 30px;
+    position: absolute;
+    left: 0;
+}
+
+footer li
+{
+    text-align: center;
+    
+}
+
+footer li a
+{
+    color: white;
+}
+
+footer
+{
+    padding: 5px;
+    border-radius: 20px;
+    margin: 20px;
+    background: rgb(0, 85, 155);
+}
+
+#about
+{
+    background: rgb(60, 142, 209);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+#about a
+{
+    background: white;
+    border-radius: 40px;
+    padding: 5px;
+    color: black;
+    border: 2px solid rgb(145, 206, 255);
+}
+
+#about h2
+{
+    color: white;
+}
+
+#about h5
+{
+    color: white;
+    margin-bottom: 100px;
+}
+
+.text
+{
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.text h1
+{
+    margin-bottom: 20px;
+}
+
+.text p
+{
+    margin-bottom: 20px;
+}
+
+.text a
+{
+    background: rgb(197, 228, 253);
+    border-radius: 40px;
+    padding: 5px;
+}
+
+@media (max-width: 1118px) {
+    nav h1{
+        left: 8%;
+    }
+}
+
+@media (max-width: 944px) {
+    nav h1{
+        left: 6%;
+        top: 20px;
+        width: 130px;
+    }
+    nav ul li a
+    {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 860px) {
+    label #btn{
+        display: block;
+    }
+
+    ul
+    {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgb(61, 114, 158);
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+
+    nav ul li
+    {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+
+    nav ul li a
+    {
+        font-size: 20px;
+    }
+
+    #about h5
+    {
+        color: white;
+        margin-bottom: 50px;
+    }
+
+    #about img
+    {
+        width: 100px;
+        border-radius: 50%;
+        border: 10px solid rgb(46, 109, 161);
+        margin-left: 30px;
+        position: absolute;
+        left: 0;
+    }
+
+    #check:checked ~ ul
+    {
+        left: 0;
+    }
+
+    #check:checked ~ label #btn
+    {
+        display: none;
+    }
+
+    #check:checked ~ label #cancel
+    {
+        display: block;
+    }
+}
