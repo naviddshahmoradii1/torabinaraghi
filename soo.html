@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افزودن داده به JSON</title>
+    <style>
+        .item {
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .item img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>نمایش داده‌ها از JSON</h1>
+
+    <!-- نمایش داده‌ها -->
+    <div id="items-container"></div>
+
+    <h2>افزودن داده جدید</h2>
+    <!-- فرم افزودن داده جدید -->
+    <form id="addItemForm">
+        <label for="title">عنوان:</label>
+        <input type="text" id="title" required><br><br>
+
+        <label for="imageLink">لینک تصویر:</label>
+        <input type="text" id="imageLink" required><br><br>
+
+        <label for="secondaryTitle">عنوان فرعی:</label>
+        <input type="text" id="secondaryTitle" required><br><br>
+
+        <label for="text">متن:</label>
+        <textarea id="text" required></textarea><br><br>
+
+        <button type="submit">افزودن</button>
+    </form>
+
+    <script>
+        // داده‌های JSON اولیه
+        let jsonData = {
+            "items": [
+                {
+                    "title": "عنوان ۱",
+                    "imageLink": "https://via.placeholder.com/150/FF0000",
+                    "imageAlt": "تصویر ۱",
+                    "secondaryTitle": "عنوان فرعی ۱",
+                    "text": "این یک متن برای اولین مورد است."
+                },
+                {
+                    "title": "عنوان ۲",
+                    "imageLink": "https://via.placeholder.com/150/00FF00",
+                    "imageAlt": "تصویر ۲",
+                    "secondaryTitle": "عنوان فرعی ۲",
+                    "text": "این یک متن برای دومین مورد است."
+                }
+            ]
+        };
+
+        // نمایش داده‌ها
+        const container = document.getElementById("items-container");
+        const addItemForm = document.getElementById("addItemForm");
+
+        // تابع برای نمایش داده‌ها
+        function displayItems() {
+            container.innerHTML = ''; // پاک کردن محتوا قبل از افزودن داده‌های جدید
+            jsonData.items.forEach(item => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("item");
+
+                const title = document.createElement("h1");
+                title.innerText = item.title;
+                itemDiv.appendChild(title);
+
+                const img = document.createElement("img");
+                img.src = item.imageLink;
+                img.alt = item.imageAlt;
+                itemDiv.appendChild(img);
+
+                const secondaryTitle = document.createElement("h2");
+                secondaryTitle.innerText = item.secondaryTitle;
+                itemDiv.appendChild(secondaryTitle);
+
+                const text = document.createElement("p");
+                text.innerText = item.text;
+                itemDiv.appendChild(text);
+
+                container.appendChild(itemDiv);
+            });
+        }
+
+        // نمایش اولیه داده‌ها
+        displayItems();
+
+        // افزودن آیتم جدید به JSON
+        addItemForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // جلوگیری از ارسال فرم به صورت پیش‌فرض
+
+            // گرفتن مقادیر فرم
+            const title = document.getElementById("title").value;
+            const imageLink = document.getElementById("imageLink").value;
+            const secondaryTitle = document.getElementById("secondaryTitle").value;
+            const text = document.getElementById("text").value;
+
+            // افزودن داده جدید به آرایه items
+            jsonData.items.push({
+                "title": title,
+                "imageLink": imageLink,
+                "imageAlt": "تصویر جدید",
+                "secondaryTitle": secondaryTitle,
+                "text": text
+            });
+
+            // نمایش دوباره داده‌ها
+            displayItems();
+
+            // پاک کردن فرم
+            addItemForm.reset();
+        });
+    </script>
+</body>
+</html>
